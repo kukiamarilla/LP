@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Compras.findAll", query = "SELECT c FROM Compras c")
     , @NamedQuery(name = "Compras.findById", query = "SELECT c FROM Compras c WHERE c.id = :id")
-    , @NamedQuery(name = "Compras.findByFecha", query = "SELECT c FROM Compras c WHERE c.fecha = :fecha")
+    , @NamedQuery(name = "Compras.findByFecha", query = "SELECT c FROM Compras c WHERE c.fecha between :desde and :hasta")
     , @NamedQuery(name = "Compras.findByTotal", query = "SELECT c FROM Compras c WHERE c.total = :total")})
 public class Compras implements Serializable {
 

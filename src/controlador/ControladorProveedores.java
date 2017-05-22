@@ -7,6 +7,7 @@ package controlador;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import modelo.Clientes;
 import modelo.Proveedores;
 
 /**
@@ -26,6 +27,14 @@ public class ControladorProveedores {
         Proveedores prov = em.createNamedQuery("Proveedores.findById", Proveedores.class)
                 .setParameter("id", id).getSingleResult();
         return prov;
+    }
+    
+    public static List<Proveedores> buscar(String nombre){
+        EntityManager em = PersistenceUtil.getEntityManager();
+        List<Proveedores> lista = em.createNamedQuery("Proveedores.search", Proveedores.class)
+                .setParameter("nombre", "%"+nombre+"%")
+                .getResultList();
+        return lista;
     }
    
     public static void insertar(Proveedores nuevo){
@@ -53,5 +62,11 @@ public class ControladorProveedores {
         em.getTransaction().begin();
         em.remove(prov);
         em.getTransaction().commit();
+    }
+    
+    public static boolean existe(String ruc){
+        EntityManager em = PersistenceUtil.getEntityManager();
+        List<Proveedores> proveedores = em.createNamedQuery("Proveedores.findByRuc",Proveedores.class).getResultList();
+        return proveedores.size() > 0;
     }
 }
