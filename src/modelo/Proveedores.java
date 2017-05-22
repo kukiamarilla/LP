@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Proveedores.findByEmail", query = "SELECT p FROM Proveedores p WHERE p.email = :email")
     , @NamedQuery(name = "Proveedores.findByDireccion", query = "SELECT p FROM Proveedores p WHERE p.direccion = :direccion")
     , @NamedQuery(name = "Proveedores.findByRuc", query = "SELECT p FROM Proveedores p WHERE p.ruc = :ruc")
-    , @NamedQuery(name = "Proveedores.findByTelefono", query = "SELECT p FROM Proveedores p WHERE p.telefono = :telefono")})
+    , @NamedQuery(name = "Proveedores.findByTelefono", query = "SELECT p FROM Proveedores p WHERE p.telefono = :telefono")
+    , @NamedQuery(name = "Proveedores.search", query = "SELECT p FROM Proveedores p WHERE p.nombre LIKE :nombre")})
 public class Proveedores implements Serializable {
 
     private static final long serialVersionUID = 1L;

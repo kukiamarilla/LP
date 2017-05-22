@@ -7,8 +7,8 @@ package controlador;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import modelo.Clientes;
 import modelo.Productos;
-import modelo.Proveedores;
 
 
 
@@ -29,7 +29,14 @@ public class ControladorProductos {
                 .setParameter("id", id).getSingleResult();
         return prod;
     }
-   
+    
+    public static List<Productos> buscar(String descripcion){
+        EntityManager em = PersistenceUtil.getEntityManager();
+        List<Productos> lista = em.createNamedQuery("Productos.search", Productos.class)
+                .setParameter("descripcion", "%"+descripcion+"%")
+                .getResultList();
+        return lista;
+    }
     public static void insertar(Productos nuevo){
         EntityManager em = PersistenceUtil.getEntityManager();
         em.getTransaction().begin();

@@ -26,6 +26,14 @@ public class ControladorClientes {
                 .setParameter("id", id).getSingleResult();
         return prov;
     }
+    
+    public static List<Clientes> buscar(String nombre){
+        EntityManager em = PersistenceUtil.getEntityManager();
+        List<Clientes> lista = em.createNamedQuery("Clientes.search", Clientes.class)
+                .setParameter("nombre", "%"+nombre+"%")
+                .getResultList();
+        return lista;
+    }
    
     public static void insertar(Clientes nuevo){
         EntityManager em = PersistenceUtil.getEntityManager();
@@ -52,5 +60,11 @@ public class ControladorClientes {
         em.getTransaction().begin();
         em.remove(prov);
         em.getTransaction().commit();
+    }
+    
+    public static boolean existe(String ruc){
+        EntityManager em = PersistenceUtil.getEntityManager();
+        List<Clientes> clientes = em.createNamedQuery("Clientes.findByRuc",Clientes.class).getResultList();
+        return clientes.size() > 0;
     }
 }

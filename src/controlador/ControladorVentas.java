@@ -5,8 +5,10 @@
  */
 package controlador;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TemporalType;
 import modelo.DetallesVentas;
 import modelo.Ventas;
 
@@ -16,12 +18,23 @@ import modelo.Ventas;
  * @author isaacamarilla
  */
 public class ControladorVentas {
-     public static List<Ventas> listar(){
+    
+    public static List<Ventas> listar(){
         EntityManager em = PersistenceUtil.getEntityManager();
         List<Ventas> lista = em.createNamedQuery("Ventas.findAll", Ventas.class).getResultList();
         return lista;
     }
    
+    public static List<Ventas> listar(Date desde, Date hasta){
+        EntityManager em = PersistenceUtil.getEntityManager();
+        List<Ventas> lista = em.createNamedQuery("Ventas.findByFecha", Ventas.class)
+                .setParameter("desde", desde, TemporalType.DATE)
+                .setParameter("hasta", hasta, TemporalType.DATE)
+                .getResultList();
+
+        return lista;
+    }
+    
     public static Ventas mostrar(int id){
         EntityManager em = PersistenceUtil.getEntityManager();
         Ventas prov = em.createNamedQuery("Ventas.findById", Ventas.class)

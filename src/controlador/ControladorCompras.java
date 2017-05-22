@@ -5,8 +5,10 @@
  */
 package controlador;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TemporalType;
 import modelo.Compras;
 
 /**
@@ -18,6 +20,16 @@ public class ControladorCompras {
     public static List<Compras> listar(){
         EntityManager em = PersistenceUtil.getEntityManager();
         List<Compras> lista = em.createNamedQuery("Compras.findAll", Compras.class).getResultList();
+        return lista;
+    }
+    
+    public static List<Compras> listar(Date desde, Date hasta){
+        EntityManager em = PersistenceUtil.getEntityManager();
+        List<Compras> lista = em.createNamedQuery("Compras.findByFecha", Compras.class)
+                .setParameter("desde", desde, TemporalType.DATE)
+                .setParameter("hasta", hasta, TemporalType.DATE)
+                .getResultList();
+
         return lista;
     }
    
