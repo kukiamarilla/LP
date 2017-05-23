@@ -30,6 +30,7 @@ public class VentanaListadoProducto extends javax.swing.JInternalFrame {
         }
     }
 
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -39,36 +40,17 @@ public class VentanaListadoProducto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        codigoLabel = new javax.swing.JLabel();
         nombreLabel = new javax.swing.JLabel();
-        codigo = new javax.swing.JTextField();
         descripcion = new javax.swing.JTextField();
-        precioLabel = new javax.swing.JLabel();
-        precio = new javax.swing.JTextField();
-        precioComp = new javax.swing.JComboBox();
-        existenciaLabel = new javax.swing.JLabel();
-        existenciaComp = new javax.swing.JComboBox();
-        existencia = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultados = new javax.swing.JTable();
         buscar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setResizable(true);
         setTitle("Listado de Productos");
 
-        codigoLabel.setText("Código:");
-
         nombreLabel.setText("Descripción:");
-
-        precioLabel.setText("Precio:");
-
-        precioComp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "=", ">=", "<=" }));
-
-        existenciaLabel.setText("Existencia:");
-
-        existenciaComp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "=", ">=", "<=" }));
 
         resultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,14 +77,16 @@ public class VentanaListadoProducto extends javax.swing.JInternalFrame {
         });
         resultados.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(resultados);
-        resultados.getColumnModel().getColumn(0).setResizable(false);
-        resultados.getColumnModel().getColumn(0).setPreferredWidth(60);
-        resultados.getColumnModel().getColumn(1).setResizable(false);
-        resultados.getColumnModel().getColumn(1).setPreferredWidth(440);
-        resultados.getColumnModel().getColumn(2).setResizable(false);
-        resultados.getColumnModel().getColumn(2).setPreferredWidth(60);
-        resultados.getColumnModel().getColumn(3).setResizable(false);
-        resultados.getColumnModel().getColumn(3).setPreferredWidth(60);
+        if (resultados.getColumnModel().getColumnCount() > 0) {
+            resultados.getColumnModel().getColumn(0).setResizable(false);
+            resultados.getColumnModel().getColumn(0).setPreferredWidth(60);
+            resultados.getColumnModel().getColumn(1).setResizable(false);
+            resultados.getColumnModel().getColumn(1).setPreferredWidth(440);
+            resultados.getColumnModel().getColumn(2).setResizable(false);
+            resultados.getColumnModel().getColumn(2).setPreferredWidth(60);
+            resultados.getColumnModel().getColumn(3).setResizable(false);
+            resultados.getColumnModel().getColumn(3).setPreferredWidth(60);
+        }
 
         buscar.setText("Buscar");
         buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,65 +95,31 @@ public class VentanaListadoProducto extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Obs: use '%' como comodín");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(codigoLabel)
-                            .addComponent(precioLabel))
+                        .addComponent(nombreLabel)
                         .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(nombreLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(precioComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(existenciaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(existenciaComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(existencia, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buscar)))))
+                        .addComponent(descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoLabel)
-                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nombreLabel)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(precioLabel)
-                    .addComponent(precioComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(existenciaLabel)
-                    .addComponent(existenciaComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(existencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -177,28 +127,10 @@ public class VentanaListadoProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        Productos p = new Productos();
-        if (!codigo.getText().isEmpty()) {
-            p.setId(Integer.parseInt(codigo.getText().trim()));
-        }
-
-        if (!descripcion.getText().isEmpty()) {
-            p.setDescripcion(descripcion.getText().trim());
-        }
-
-        if (!precio.getText().isEmpty()) {
-            p.setPrecio(Integer.parseInt(precio.getText().trim()));
-        }
-
-        if (!existencia.getText().isEmpty()) {
-            p.setCantidad(Integer.parseInt(existencia.getText().trim()));
-        }
-
+        String desc = descripcion.getText();
         try {
             // se obtienen los resultados
-            List<Productos> result = controladorProducto.listar(p,
-                    precioComp.getSelectedItem().toString(),
-                    existenciaComp.getSelectedItem().toString());
+            List<Productos> result = ControladorProductos.buscar(desc);
 
             // se obtiene la referencia al modelo de datos
             DefaultTableModel tm = ((DefaultTableModel) resultados.getModel());
@@ -220,18 +152,9 @@ public class VentanaListadoProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buscarActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
-    private javax.swing.JTextField codigo;
-    private javax.swing.JLabel codigoLabel;
     private javax.swing.JTextField descripcion;
-    private javax.swing.JTextField existencia;
-    private javax.swing.JComboBox existenciaComp;
-    private javax.swing.JLabel existenciaLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreLabel;
-    private javax.swing.JTextField precio;
-    private javax.swing.JComboBox precioComp;
-    private javax.swing.JLabel precioLabel;
     private javax.swing.JTable resultados;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,6 +12,7 @@ package vista;
 
 import javax.swing.JOptionPane;
 import controlador.ControladorProductos;
+import controlador.ControladorProveedores;
 import modelo.Productos;
 
 /**
@@ -58,6 +59,8 @@ public class VentanaAbmProducto extends javax.swing.JInternalFrame {
         cancelar = new javax.swing.JButton();
         precio = new javax.swing.JTextField();
         existencia = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        codigoProveedor = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("ABM Producto");
@@ -120,37 +123,62 @@ public class VentanaAbmProducto extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setText("Codigo Proveedor:");
+
+        codigoProveedor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                codigoProveedorFocusLost(evt);
+            }
+        });
+        codigoProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codigoProveedorActionPerformed(evt);
+            }
+        });
+        codigoProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                codigoProveedorKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(precioLabel)
-                    .addComponent(nombreLabel)
-                    .addComponent(codigoLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(precioLabel)
+                            .addComponent(nombreLabel)
+                            .addComponent(codigoLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(existenciaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(existencia, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(guardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(borrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cancelar)))
-                        .addGap(13, 13, 13))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(existenciaLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(existencia, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(guardar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(borrar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cancelar)))
+                                .addGap(13, 13, 13))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(codigoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,57 +197,46 @@ public class VentanaAbmProducto extends javax.swing.JInternalFrame {
                     .addComponent(existenciaLabel)
                     .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(precioLabel))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(codigoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cancelar)
                     .addComponent(borrar)
                     .addComponent(guardar))
-                .addContainerGap())
+                .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        if (codigo.getText() == null || codigo.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "El código no puede ser nulo");
-            codigo.requestFocus();
-            return;
-        } else if (descripcion.getText() == null
-                || descripcion.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "La descripcion no puede ser nula");
-            descripcion.requestFocus();
-            return;
-        } else if (precio.getText() == null
-                || precio.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "El precio no puede ser nulo");
-            precio.requestFocus();
-            return;
-        } else if (Double.parseDouble(precio.getText()) <= 0.0) {
-            JOptionPane.showMessageDialog(this, "El precio no puede ser "
-                    + "menor o igual a cero");
-            precio.requestFocus();
-            return;
-        } else if (existencia.getText() == null
-                || existencia.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "La existencia no puede ser "
-                    + "nula");
-            existencia.requestFocus();
-            return;
-        } else if (Integer.parseInt(existencia.getText()) < 0) {
-            JOptionPane.showMessageDialog(this, "La existencia no puede ser "
-                    + "menor a cero");
-            existencia.requestFocus();
+
+        if(descripcion.getText().equals("") || existencia.getText().equals("") 
+                || precio.getText().equals("") || codigoProveedor.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Se deben rellenar todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
         try {
             Productos producto = new Productos();
-            producto.setId(Integer.parseInt(codigo.getText().trim()));
+            
             producto.setDescripcion(descripcion.getText().trim());
             producto.setCantidad(Integer.parseInt(existencia.getText().trim()));
             producto.setPrecio(Integer.parseInt(precio.getText().trim()));
-            controladorProducto.insertar(producto);
+            if(Integer.parseInt(precio.getText().trim()) < 0){
+                JOptionPane.showMessageDialog(this, "La existencia no puede ser negativa.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            producto.setProveedoresId(ControladorProveedores.mostrar(Integer.parseInt(codigoProveedor.getText())));
+            if(!codigo.getText().equals("")){
+                producto.setId(Integer.parseInt(codigo.getText().trim()));
+                ControladorProductos.actualizar(producto);
+            }else{
+                ControladorProductos.insertar(producto);
+            }
+            
             JOptionPane.showMessageDialog(this, "Producto guardado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error del sistema: ["
@@ -234,28 +251,12 @@ public class VentanaAbmProducto extends javax.swing.JInternalFrame {
         descripcion.setText("");
         precio.setText("");
         existencia.setText("");
+        codigoProveedor.setText("");
         recuperadoBD = false;
         codigo.requestFocus();
     }//GEN-LAST:event_cancelarActionPerformed
     private void codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoFocusLost
-        if (this.recuperadoBD == false ) {
-            try {
-                Productos p = controladorProducto.mostrar(Integer.parseInt(this.codigo.getText()));
-                // puede que el objeto no esté sincronizado con la bd
-                if (p != null) {
-                    codigo.setText(Integer.toString(p.getId()));
-                    codigo.setEditable(false);
-                    descripcion.setText(p.getDescripcion());
-                    precio.setText(p.getPrecio().toString());
-                    existencia.setText(Integer.toString(p.getCantidad()));
-                    this.recuperadoBD = true;
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Error del sistema: ["
-                        + e.getMessage() + "]");
-                e.printStackTrace();
-            }
-        }
+        
     }//GEN-LAST:event_codigoFocusLost
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
@@ -269,7 +270,7 @@ public class VentanaAbmProducto extends javax.swing.JInternalFrame {
             try {
                 Productos producto = new Productos();
                 producto.setId(Integer.parseInt(codigo.getText()));
-                controladorProducto.eliminar(producto.getId());
+                ControladorProductos.eliminar(producto.getId());
                 JOptionPane.showMessageDialog(this, "Producto eliminado exitosamente");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error del sistema: ["
@@ -312,15 +313,30 @@ public class VentanaAbmProducto extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_existenciaKeyTyped
+
+    private void codigoProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoProveedorFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codigoProveedorFocusLost
+
+    private void codigoProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoProveedorKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codigoProveedorKeyTyped
+
+    private void codigoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codigoProveedorActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton borrar;
     private javax.swing.JButton cancelar;
     private javax.swing.JTextField codigo;
     private javax.swing.JLabel codigoLabel;
+    private javax.swing.JTextField codigoProveedor;
     private javax.swing.JTextField descripcion;
     private javax.swing.JTextField existencia;
     private javax.swing.JLabel existenciaLabel;
     private javax.swing.JButton guardar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JTextField precio;
     private javax.swing.JLabel precioLabel;

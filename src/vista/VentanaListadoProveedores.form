@@ -22,36 +22,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="codigoLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="codigo" min="-2" pref="378" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="codigoLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="codigoLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="codigoLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="codigoLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="nombreProveedor" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="telefonoProveedor" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="direccionProveedor" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="rucProveedor" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="codigoLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="nombreProveedor" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="buscar" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane1" pref="564" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
           </Group>
@@ -60,35 +41,15 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="codigoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="codigo" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="codigoLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nombreProveedor" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="codigoLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rucProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buscar" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="codigoLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="direccionProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="codigoLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="telefonoProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="166" max="-2" attributes="0"/>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -99,35 +60,7 @@
         <Property name="text" type="java.lang.String" value="Nombre:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="codigo">
-    </Component>
-    <Component class="javax.swing.JLabel" name="codigoLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="RUC/CI:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="nombreProveedor">
-    </Component>
-    <Component class="javax.swing.JTextField" name="rucProveedor">
-    </Component>
-    <Component class="javax.swing.JLabel" name="codigoLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="codigoLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Direccion:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="direccionProveedor">
-    </Component>
-    <Component class="javax.swing.JLabel" name="codigoLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Telefono:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="telefonoProveedor">
     </Component>
     <Component class="javax.swing.JButton" name="buscar">
       <Properties>
@@ -147,16 +80,22 @@
         <Component class="javax.swing.JTable" name="resultados">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="0">
+              <Table columnCount="6" rowCount="0">
                 <Column editable="false" title="C&#xf3;digo" type="java.lang.String"/>
                 <Column editable="false" title="Nombre" type="java.lang.String"/>
                 <Column editable="false" title="RUC/CI" type="java.lang.String"/>
                 <Column editable="false" title="Direccion" type="java.lang.String"/>
                 <Column editable="false" title="Telefono" type="java.lang.String"/>
+                <Column editable="false" title="Email" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>

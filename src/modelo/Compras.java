@@ -126,5 +126,7 @@ public class Compras implements Serializable {
     public String toString() {
         return "modelo.Compras[ id=" + id + " ]";
     }
+
+    
     
 }

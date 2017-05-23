@@ -3,12 +3,13 @@
  *
  * Created on 25 de mayo de 2008, 11:05 AM
  */
-package py.una.pol.lp2.compraVenta.vista;
+package vista;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
+import vista.VentanaAbmProducto;
 
 /**
  *
@@ -17,11 +18,18 @@ import javax.swing.event.InternalFrameEvent;
 public class VentanaPrincipal extends JFrame {
 
     private VentanaAbmProducto vap = null;
-    private VentanaAbmProveedor vape = null;
+    private VentanaAbmProveedor vape = null;    
+    private VentanaAbmCliente vacl = null;
+
     private VentanaListadoProducto vlp = null;
     private VentanaListadoProveedores vlpr = null;
     private VentanaCargaCompra vcc = null;
-    private VentanaListadoCompras vlcp = null;
+    private VentanaCargaVenta vcv = null;
+    private VentanaListadoCompras vlcp = null;    
+    private VentanaListadoClientes vlct = null;    
+    private VentanaListadoVentas vlvt = null;
+
+
 
     public VentanaPrincipal() {
         initComponents();
@@ -40,7 +48,7 @@ public class VentanaPrincipal extends JFrame {
         proveedor = new javax.swing.JMenuItem();
         abmCliente = new javax.swing.JMenuItem();
         menuCargaDatos = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        CargaVenta = new javax.swing.JMenuItem();
         CargaCompa = new javax.swing.JMenuItem();
         menuListados = new javax.swing.JMenu();
         listadoProducto = new javax.swing.JMenuItem();
@@ -55,6 +63,7 @@ public class VentanaPrincipal extends JFrame {
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         panel.setBackground(new java.awt.Color(204, 204, 204));
+        panel.setLayout(null);
         getContentPane().add(panel);
 
         menuArchivo.setText("Archivo");
@@ -99,13 +108,13 @@ public class VentanaPrincipal extends JFrame {
 
         menuCargaDatos.setText("Carga Datos");
 
-        jMenuItem1.setText("Venta");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        CargaVenta.setText("Venta");
+        CargaVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                CargaVentaActionPerformed(evt);
             }
         });
-        menuCargaDatos.add(jMenuItem1);
+        menuCargaDatos.add(CargaVenta);
 
         CargaCompa.setText("Compra");
         CargaCompa.addActionListener(new java.awt.event.ActionListener() {
@@ -158,12 +167,12 @@ public class VentanaPrincipal extends JFrame {
             }
         });
         listarCompras.addMenuDragMouseListener(new javax.swing.event.MenuDragMouseListener() {
-            public void menuDragMouseDragged(javax.swing.event.MenuDragMouseEvent evt) {
-                listarComprasMenuDragMouseDragged(evt);
-            }
             public void menuDragMouseEntered(javax.swing.event.MenuDragMouseEvent evt) {
             }
             public void menuDragMouseExited(javax.swing.event.MenuDragMouseEvent evt) {
+            }
+            public void menuDragMouseDragged(javax.swing.event.MenuDragMouseEvent evt) {
+                listarComprasMenuDragMouseDragged(evt);
             }
             public void menuDragMouseReleased(javax.swing.event.MenuDragMouseEvent evt) {
             }
@@ -218,13 +227,45 @@ private void listadoProductoActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }
 }//GEN-LAST:event_listadoProductoActionPerformed
-
-private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
     
-}//GEN-LAST:event_jMenuItem1ActionPerformed
+private void CargaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargaVentaActionPerformed
+    if (vcv == null) {
+        vcv = new VentanaCargaVenta();
+        panel.add(vcv);
+        vcv.addInternalFrameListener(new InternalFrameAdapter() {
+
+            @Override
+            public void internalFrameClosed(InternalFrameEvent e) {
+                vcv = null;
+            }
+        });
+        vcv.setVisible(true);
+    } else { // si la ventana esta abierta, le damos el foco.
+        try {
+            vcv.setSelected(true);
+        } catch (Exception ignorada) {
+        }
+    }
+}//GEN-LAST:event_CargaVentaActionPerformed
 
 private void listadoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoVentaActionPerformed
-    
+    if (vlvt == null) {
+        vlvt = new VentanaListadoVentas();
+        panel.add(vlvt);
+        vlvt.addInternalFrameListener(new InternalFrameAdapter() {
+
+            @Override
+            public void internalFrameClosed(InternalFrameEvent e) {
+                vlvt = null;
+            }
+        });
+        vlvt.setVisible(true);
+    } else { // si la ventana esta abierta, le damos el foco.
+        try {
+            vlvt.setSelected(true);
+        } catch (Exception ignorada) {
+        }
+    }
 }//GEN-LAST:event_listadoVentaActionPerformed
 
 private void proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proveedorActionPerformed
@@ -250,7 +291,23 @@ private void proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 }//GEN-LAST:event_proveedorActionPerformed
 
 private void abmClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abmClienteActionPerformed
-    
+    if (vacl == null) {
+        vacl = new VentanaAbmCliente();
+        panel.add(vacl);
+        vacl.addInternalFrameListener(new InternalFrameAdapter() {
+
+            @Override
+            public void internalFrameClosed(InternalFrameEvent e) {
+                vacl = null;
+            }
+        });
+        vacl.setVisible(true);
+    } else { // si la ventana esta abierta, le damos el foco.
+        try {
+            vacl.setSelected(true);
+        } catch (Exception ignorada) {
+        }
+    }
 }//GEN-LAST:event_abmClienteActionPerformed
 
 private void CargaCompaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargaCompaActionPerformed
@@ -298,7 +355,23 @@ private void listadoProveedoresActionPerformed(java.awt.event.ActionEvent evt) {
 }//GEN-LAST:event_listadoProveedoresActionPerformed
 
 private void listadoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoClientesActionPerformed
-    
+    if (vlct == null) {
+        vlct = new VentanaListadoClientes();
+        panel.add(vlct);
+        vlct.addInternalFrameListener(new InternalFrameAdapter() {
+
+            @Override
+            public void internalFrameClosed(InternalFrameEvent e) {
+                vlct = null;
+            }
+        });
+        vlct.setVisible(true);
+    } else { // si la ventana esta abierta, le damos el foco.
+        try {
+            vlct.setSelected(true);
+        } catch (Exception ignorada) {
+        }
+    }
 }//GEN-LAST:event_listadoClientesActionPerformed
 
 private void listarComprasMenuDragMouseDragged(javax.swing.event.MenuDragMouseEvent evt) {//GEN-FIRST:event_listarComprasMenuDragMouseDragged
@@ -331,10 +404,10 @@ private void listarComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CargaCompa;
+    private javax.swing.JMenuItem CargaVenta;
     private javax.swing.JMenuItem abmCliente;
     private javax.swing.JMenuItem abmProducto;
     private javax.swing.JMenuItem itemSalir;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem listadoClientes;
     private javax.swing.JMenuItem listadoProducto;
     private javax.swing.JMenuItem listadoProveedores;

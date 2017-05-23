@@ -1,5 +1,7 @@
 package main;
 
+import vista.VentanaPrincipal;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,7 +16,8 @@ package main;
  */
 public class Main {
     public static void main(String[] args) {
-        
+        VentanaPrincipal vp = new VentanaPrincipal();
+        vp.setVisible(true);
     }
 
 }

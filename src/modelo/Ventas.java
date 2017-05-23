@@ -126,5 +126,9 @@ public class Ventas implements Serializable {
     public String toString() {
         return "modelo.Ventas[ id=" + id + " ]";
     }
+
+    public void setProveedores(Proveedores mostrar) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

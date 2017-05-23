@@ -1,6 +1,7 @@
 
 package vista;
 
+import controlador.ControladorProductos;
 import javax.swing.JOptionPane;
 import controlador.ControladorProveedores;
 import modelo.Proveedores;
@@ -50,6 +51,8 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
         borrar = new javax.swing.JButton();
         guardar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        email = new javax.swing.JTextField();
+        codigoLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
         setName("Proveedores"); // NOI18N
@@ -145,6 +148,19 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
             }
         });
 
+        email.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailFocusLost(evt);
+            }
+        });
+        email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                emailKeyTyped(evt);
+            }
+        });
+
+        codigoLabel5.setText("Email:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,22 +187,25 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(codigoLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rucci, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(codigoLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(codigoLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(rucci, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(codigoLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(codigoLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(codigoLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(codigoLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(51, 51, 51))))
         );
         layout.setVerticalGroup(
@@ -207,7 +226,10 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoLabel4)
-                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(codigoLabel5)
+                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cancelar)
@@ -220,25 +242,7 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void codigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_codigoFocusLost
-        if (this.recuperadoBD == false ) {
-            try {
-                Proveedores p = controladorProveedores.mostrar(Integer.parseInt(this.codigo.getText()));
-                // puede que el objeto no esté sincronizado con la bd
-                if (p != null) {
-                    codigo.setText(Integer.toString(p.getId()));
-                    codigo.setEditable(false);
-                    nombre.setText(p.getNombre());
-                    rucci.setText(p.getRuc());
-                    direccion.setText(p.getDireccion());
-                    telefono.setText(p.getTelefono());
-                    this.recuperadoBD = true;
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Error del sistema: ["
-                        + e.getMessage() + "]");
-                e.printStackTrace();
-            }
-        }
+        
 }//GEN-LAST:event_codigoFocusLost
 
     private void codigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoKeyTyped
@@ -312,34 +316,12 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_borrarActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        if (codigo.getText() == null || codigo.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "El código no puede ser nulo");
-            codigo.requestFocus();
-            return;
-        } else if (nombre.getText() == null
-                || nombre.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "El nombre no puede ser nulo");
-            nombre.requestFocus();
-            return;
-        } else if (rucci.getText() == null
-                || rucci.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "El rucci no puede ser nulo");
-            rucci.requestFocus();
-            return;
-        } else if (direccion.getText() == null
-                || direccion.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "La direccion no puede ser "
-                    + "nula");
-            direccion.requestFocus();
-            return;
-        } else if (telefono.getText() == null
-                || telefono.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "El telefono no puede ser "
-                    + "nulo");
-            telefono.requestFocus();
+        
+        if(codigo.getText().equals("") || nombre.getText().equals("") 
+                || direccion.getText().equals("") || telefono.getText().equals("")|| email.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Se deben rellenar todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
         try {
             Proveedores proveedor = new Proveedores();
             proveedor.setId(Integer.parseInt(codigo.getText().trim()));
@@ -347,7 +329,14 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
             proveedor.setRuc(rucci.getText().trim());
             proveedor.setDireccion(direccion.getText().trim());
             proveedor.setTelefono(telefono.getText().trim());
-            controladorProveedores.insertar(proveedor);
+            proveedor.setEmail(email.getText().trim());
+
+            if(!codigo.getText().equals("")){
+                proveedor.setId(Integer.parseInt(codigo.getText().trim()));
+                ControladorProveedores.actualizar(proveedor);
+            }else{
+                ControladorProveedores.insertar(proveedor);
+            }
             JOptionPane.showMessageDialog(this, "Proveedor guardado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error del sistema: ["
@@ -362,7 +351,9 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
         nombre.setText("");
         rucci.setText("");
         direccion.setText("");
-        telefono.setText("");
+        telefono.setText("");        
+        email.setText("");
+
         recuperadoBD = false;
         codigo.requestFocus();
 }//GEN-LAST:event_cancelarActionPerformed
@@ -370,6 +361,14 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
     private void rucciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rucciActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rucciActionPerformed
+
+    private void emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailFocusLost
+
+    private void emailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -381,7 +380,9 @@ public class VentanaAbmProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel codigoLabel2;
     private javax.swing.JLabel codigoLabel3;
     private javax.swing.JLabel codigoLabel4;
+    private javax.swing.JLabel codigoLabel5;
     private javax.swing.JTextField direccion;
+    private javax.swing.JTextField email;
     private javax.swing.JButton guardar;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField rucci;

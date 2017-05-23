@@ -15,14 +15,6 @@ public class VentanaListadoProveedores extends javax.swing.JInternalFrame {
     public VentanaListadoProveedores() {
         initComponents();
 
-        try {
-            controladorProveedor = new ControladorProveedores();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
-                    "Error al inciar el motor de persistencia\n ["
-                    + e.getMessage() + "]");
-            this.dispose();
-        }
     }
 
     /** This method is called from within the constructor to
@@ -35,15 +27,7 @@ public class VentanaListadoProveedores extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         codigoLabel1 = new javax.swing.JLabel();
-        codigo = new javax.swing.JTextField();
-        codigoLabel2 = new javax.swing.JLabel();
         nombreProveedor = new javax.swing.JTextField();
-        rucProveedor = new javax.swing.JTextField();
-        codigoLabel = new javax.swing.JLabel();
-        codigoLabel3 = new javax.swing.JLabel();
-        direccionProveedor = new javax.swing.JTextField();
-        codigoLabel4 = new javax.swing.JLabel();
-        telefonoProveedor = new javax.swing.JTextField();
         buscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultados = new javax.swing.JTable();
@@ -51,14 +35,6 @@ public class VentanaListadoProveedores extends javax.swing.JInternalFrame {
         setClosable(true);
 
         codigoLabel1.setText("Nombre:");
-
-        codigoLabel2.setText("RUC/CI:");
-
-        codigoLabel.setText("Código:");
-
-        codigoLabel3.setText("Direccion:");
-
-        codigoLabel4.setText("Telefono:");
 
         buscar.setText("Buscar");
         buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,14 +48,14 @@ public class VentanaListadoProveedores extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Código", "Nombre", "RUC/CI", "Direccion", "Telefono"
+                "Código", "Nombre", "RUC/CI", "Direccion", "Telefono", "Email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -97,91 +73,40 @@ public class VentanaListadoProveedores extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(codigoLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(codigoLabel2)
-                                    .addComponent(codigoLabel3)
-                                    .addComponent(codigoLabel4)
-                                    .addComponent(codigoLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nombreProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                                    .addComponent(telefonoProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                                    .addComponent(direccionProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                                    .addComponent(rucProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))))
-                        .addGap(34, 34, 34)
-                        .addComponent(buscar)))
+                        .addComponent(codigoLabel1)
+                        .addGap(16, 16, 16)
+                        .addComponent(nombreProveedor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoLabel)
-                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoLabel1)
-                    .addComponent(nombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoLabel2)
-                    .addComponent(rucProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoLabel3)
-                    .addComponent(direccionProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoLabel4)
-                    .addComponent(telefonoProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        Proveedores p = new Proveedores();
-        if (!codigo.getText().isEmpty()) {
-            p.setId(Integer.parseInt(codigo.getText().trim()));
-        }
-
-        if (!nombreProveedor.getText().isEmpty()) {
-            p.setNombre(nombreProveedor.getText().trim());
-        }
-
-        if (!rucProveedor.getText().isEmpty()) {
-            p.setRuc(rucProveedor.getText().trim());
-        }
-
-        if (!direccionProveedor.getText().isEmpty()) {
-            p.setDireccion(direccionProveedor.getText().trim());
-        }
-
-        if (!telefonoProveedor.getText().isEmpty()) {
-            p.setTelefono(telefonoProveedor.getText().trim());
-        }
-
-
+        String nombre = nombreProveedor.getText();
 
         try {
             // se obtienen los resultados
-            List<Proveedores> result = controladorProveedor.buscar(p);
+            List<Proveedores> result = ControladorProveedores.buscar(nombre);
 
             // se obtiene la referencia al modelo de datos
             DefaultTableModel tm = ((DefaultTableModel) resultados.getModel());
@@ -192,7 +117,7 @@ public class VentanaListadoProveedores extends javax.swing.JInternalFrame {
             // cada fila recuperada es un array de Object[]
             for (Proveedores iterador : result) {
                 Object[] row = {iterador.getId(), iterador.getNombre(),
-                iterador.getRuc(), iterador.getDireccion(), iterador.getTelefono()};
+                iterador.getRuc(), iterador.getDireccion(), iterador.getTelefono(), iterador.getEmail()};
                 tm.addRow(row);
             }
         } catch (Exception e) {
@@ -205,18 +130,10 @@ public class VentanaListadoProveedores extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
-    private javax.swing.JTextField codigo;
-    private javax.swing.JLabel codigoLabel;
     private javax.swing.JLabel codigoLabel1;
-    private javax.swing.JLabel codigoLabel2;
-    private javax.swing.JLabel codigoLabel3;
-    private javax.swing.JLabel codigoLabel4;
-    private javax.swing.JTextField direccionProveedor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombreProveedor;
     private javax.swing.JTable resultados;
-    private javax.swing.JTextField rucProveedor;
-    private javax.swing.JTextField telefonoProveedor;
     // End of variables declaration//GEN-END:variables
 
 }

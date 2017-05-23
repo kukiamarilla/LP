@@ -177,7 +177,7 @@ public class VentanaListadoCompras extends javax.swing.JInternalFrame {
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         if (evt.getClickCount() == 2) {
             Integer NroCbte = (Integer)(tabla.getValueAt(tabla.getSelectedRow(), 1));
-            Compras v = controladorCompra.mostrar(NroCbte);
+            Compras v = ControladorCompras.mostrar(NroCbte);
             VentanaMostrarCompra vmv = new VentanaMostrarCompra(v);
             this.getParent().add(vmv);
             vmv.show();

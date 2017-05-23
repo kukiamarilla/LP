@@ -2,6 +2,7 @@
 package vista;
 
 import modelo.Compras;
+import modelo.DetallesCompras;
 /**
  *
  * @author gustavo
@@ -25,8 +26,15 @@ public class VentanaMostrarCompra extends javax.swing.JInternalFrame {
         codProveedorTf.setText(v.getProveedoresId().getId().toString());
         nombreTf.setText(v.getProveedoresId().getNombre());
         direccionTf.setText(v.getProveedoresId().getDireccion());
-
-        ((CompraDetalleTableModel)detalles.getModel()).setDatos(v.getDetallesComprasCollection());
+        int i=0;
+        for(DetallesCompras detalle : v.getDetallesComprasCollection()){
+            detalles.setValueAt(detalle.getProductos().getId(), i, 0);
+            detalles.setValueAt(detalle.getProductos().getDescripcion(), i, 1);
+            detalles.setValueAt(detalle.getCantidad(), i, 2);
+            detalles.setValueAt(detalle.getProductos().getPrecio(), i, 3);
+            detalles.setValueAt(detalle.getProductos().getPrecio()*detalle.getCantidad(), i, 4);
+            i++;
+        }
     }
 
     /** This method is called from within the constructor to

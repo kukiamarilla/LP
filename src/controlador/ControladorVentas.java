@@ -47,7 +47,9 @@ public class ControladorVentas {
         boolean hayProductos = true;
         em.getTransaction().begin();
         em.persist(nuevo);
-        for(DetallesVentas dv : nuevo.getDetallesVentasCollection()){
+        for(DetallesVentas dv : nuevo.getDetallesVentasCollection()){            
+            System.out.println(dv.getProductos());
+
             if(dv.getProductos().getCantidad() < dv.getCantidad()) hayProductos=false;
             dv.getProductos().setCantidad(dv.getProductos().getCantidad() - dv.getCantidad());
         }

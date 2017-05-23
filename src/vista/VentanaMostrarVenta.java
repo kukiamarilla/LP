@@ -11,6 +11,8 @@
 
 package vista;
 
+import modelo.DetallesCompras;
+import modelo.DetallesVentas;
 import modelo.Ventas;
 /**
  *
@@ -36,7 +38,15 @@ public class VentanaMostrarVenta extends javax.swing.JInternalFrame {
         nombreTf.setText(v.getClientesId().getNombre());
         direccionTf.setText(v.getClientesId().getDireccion());
 
-        ((VentaDetalleTableModel)detalles.getModel()).setDatos(v.getDetallesVentasCollection());
+        int i=0;
+        for(DetallesVentas detalle : v.getDetallesVentasCollection()){
+            detalles.getModel().setValueAt(detalle.getProductos().getId(), i, 0);
+            detalles.getModel().setValueAt(detalle.getProductos().getDescripcion(), i, 1);
+            detalles.getModel().setValueAt(detalle.getCantidad(), i, 2);
+            detalles.getModel().setValueAt(detalle.getProductos().getPrecio(), i, 3);
+            detalles.getModel().setValueAt(detalle.getProductos().getPrecio()*detalle.getCantidad(), i, 4);
+            i++;
+        }
     }
 
     /** This method is called from within the constructor to
@@ -67,7 +77,29 @@ public class VentanaMostrarVenta extends javax.swing.JInternalFrame {
 
         codClienteTf.setEnabled(false);
 
-        detalles.setModel(new CompraDetalleTableModel());
+        detalles.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Descripcion", "Cantidad", "Precio", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         detalles.setEnabled(false);
         jScrollPane1.setViewportView(detalles);
 

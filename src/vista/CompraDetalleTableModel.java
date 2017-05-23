@@ -121,20 +121,18 @@ public class CompraDetalleTableModel extends AbstractTableModel{
                 }
                 return vd.getProductos().getDescripcion();
             case 2:
-                if (vd.getPrecio() == null && vd.getProductos() != null) {
-                        vd.setPrecio(vd.getProductos().getPrecio());
-                }
-                return vd.getPrecio();
+                
+                return vd.getProductos().getPrecio();
             case 3:
                 if (vd.getCantidad() == null) {
                         vd.setCantidad(1);
                 }
                 return vd.getCantidad();
             default:
-                if (vd.getCantidad() == null || vd.getPrecio() == null) {
+                if (vd.getCantidad() == null || vd.getProductos().getPrecio() == null) {
                     return null;
                 }
-                return vd.getCantidad() * vd.getPrecio();
+                return vd.getCantidad() * vd.getProductos().getPrecio();
         }
     }
 
@@ -186,7 +184,7 @@ public class CompraDetalleTableModel extends AbstractTableModel{
                 vd.setProductos((Productos) valor);
                 // se informa del cambio en todas las columnas generadas
                 // por el objeto Producto (id, descripcion, precio)
-                vd.setPrecio(null);
+                
                 vd.setCantidad(null);
                 fireTableCellUpdated(fila, 0);
                 fireTableCellUpdated(fila, 1);
@@ -203,7 +201,7 @@ public class CompraDetalleTableModel extends AbstractTableModel{
                     throw new IllegalArgumentException("El parámetro para la "
                             + "columna " + columna + " deber ser Double");
                 }
-                vd.setPrecio((Double) valor);
+                
                 fireTableCellUpdated(fila, 2);
                 fireTableCellUpdated(fila, 4);
                 return;

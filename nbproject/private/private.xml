@@ -3,11 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/admin/Desktop/LP/src/vista/VentaDetalleTableModel.java</file>
-            <file>file:/C:/Users/admin/Desktop/LP/src/modelo/Ventas.java</file>
-            <file>file:/C:/Users/admin/Desktop/LP/src/vista/CompraDetalleTableModel.java</file>
-            <file>file:/C:/Users/admin/Desktop/LP/src/modelo/Compras.java</file>
-            <file>file:/C:/Users/admin/Desktop/LP/src/vista/VentanaMostrarCompra.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/META-INF/persistence.xml</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/controlador/ControladorProductos.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/controlador/ControladorProveedores.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/modelo/Productos.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/modelo/DetallesCompras.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/main/Main.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/modelo/Ventas.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/modelo/Proveedores.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/modelo/Compras.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/modelo/DetallesVentas.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/vista/VentanaListadoProducto.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/controlador/ControladorVentas.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/controlador/ControladorClientes.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/controlador/PersistenceUtil.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/controlador/ControladorCompras.java</file>
+            <file>file:/Users/isaacamarilla/NetBeansProjects/Sistema/src/modelo/Clientes.java</file>
         </group>
     </open-files>
 </project-private>
